@@ -25,7 +25,7 @@ jobs:
               docker login -u dkalunge -p Discover#1137
 
        - name: build docker Image
-           run: |
+         run: |
              docker build  -t  scheduler-web  .
 
        - name: Extract metadata (tags, labels) for Docker
