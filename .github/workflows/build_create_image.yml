@@ -16,5 +16,5 @@ name: TestAndBuild
             node-version: '16.x'
             registry-url: 'https://registry.npmjs.org'
        - name: build
-         run: npm run build
+         run: react-scripts build
 
