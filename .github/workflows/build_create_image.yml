@@ -15,6 +15,8 @@ name: TestAndBuild
           with:
             node-version: '16.x'
             registry-url: 'https://registry.npmjs.org'
-       - name: build
+       - name: clean install
          run: npm ci
+       - name: clean install
+         run: npm run build
 
