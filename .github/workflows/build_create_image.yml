@@ -17,6 +17,11 @@ jobs:
             registry-url: 'https://registry.npmjs.org'
        - name: clean install
          run: npm ci
-       - name: clean install
+       - name: build
          run: npm run build
+       - name: build docker Image
+           run: |
+             docker build  -t  scheduler-web  .
+      outputs:
+        image_name: scheduler-web
 
