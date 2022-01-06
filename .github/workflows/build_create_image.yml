@@ -19,13 +19,14 @@ jobs:
          run: npm ci
        - name: build
          run: npm run build
-       - name: build docker Image
-         run: |
-             docker build  -t  scheduler-web  .
 
        - name: Log in to Docker Hub
          run: |
               docker login -u dkalunge -p Discover#1137
+
+       - name: build docker Image
+           run: |
+             docker build  -t  scheduler-web  .
 
        - name: Extract metadata (tags, labels) for Docker
          id: meta
