@@ -25,12 +25,12 @@ jobs:
              docker build  -t  scheduler-web  .
        - name: push the docker image
          env:
-           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+           HEROKU_API_KEY: ${{ secrets.CONTAINER_REGISTRY_API_KEY}}
          run: |
-               docker login --username=${{ secrets.CONTAINER_REGISTRY_USER_NAME }} --password=${{ secrets.CONTAINER_REGISTRY_API_KEY}} registry.heroku.com
-               docker tag scheduler-web  registry.heroku.com/scheduler-web/web
-               docker push registry.heroku.com/scheduler-web/web
-               heroku container:release web -a scheduler-web
+               docker login --username=${{ secrets.CONTAINER_REGISTRY_USER_NAME }} --password=${{ secrets.CONTAINER_REGISTRY_API_KEY}}  ${{ secrets.CONTAINER_REGISTRY }}
+               docker tag scheduler-web   ${{ secrets.CONTAINER_REGISTRY }}/${{ secrets.HEROKU_APP_ANME }}/web
+               docker push  ${{ secrets.CONTAINER_REGISTRY }}/${{ secrets.HEROKU_APP_ANME }}/web
+               heroku container:release web -a ${{ secrets.HEROKU_APP_ANME }}
 
       outputs:
         image_name: scheduler-web
