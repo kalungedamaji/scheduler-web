@@ -20,16 +20,13 @@ jobs:
        - name: build
          run: npm run build
 
-       - name: Log in to Docker Hub
-         run: |
-              docker login -u dkalunge -p Discover#1137
-
        - name: build docker Image
          run: |
              docker build  -t  scheduler-web  .
        - name: push the docker image
          run: |
-               docker push  scheduler-web
+               docker login --username=${{ secrets.HEROKU_USER_NAME }} --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
+               docker push scheduler-web
 
       outputs:
         image_name: scheduler-web
