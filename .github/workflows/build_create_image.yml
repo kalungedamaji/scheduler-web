@@ -32,6 +32,4 @@ jobs:
                docker push  ${{ secrets.CONTAINER_REGISTRY }}/${{ secrets.HEROKU_APP_ANME }}/web
                heroku container:release web -a ${{ secrets.HEROKU_APP_ANME }}
 
-      outputs:
-        image_name: scheduler-web
 
