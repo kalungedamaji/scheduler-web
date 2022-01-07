@@ -26,9 +26,9 @@ jobs:
        - name: push the docker image
          run: |
                docker login --username=${{ secrets.HEROKU_USER_NAME }} --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
-               sudo docker push scheduler-web
-               sudo docker tag scheduler-web scheduler-web-dev
-               sudo heroku container:release scheduler-web-dev -a spring1-boot-app-dev
+               docker tag scheduler-web  registry.heroku.com/scheduler-web/web
+               docker push registry.heroku.com/scheduler-web/web
+               heroku container:release web -a spring1-boot-app-dev
 
       outputs:
         image_name: scheduler-web
